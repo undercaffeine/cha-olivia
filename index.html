@@ -269,15 +269,12 @@
             word-break: break-all;
         }
         .pix-notice {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 10px 18px;
-            background: var(--card-bg-warm);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            font-size: 0.8rem;
+            display: block;
+            margin: 16px auto 0;
+            max-width: 440px;
+            font-size: 0.9rem;
             color: var(--text-subtle);
-            line-height: 1.5;
+            line-height: 1.6;
         }
         .sheet-link {
             display: block;
@@ -326,7 +323,7 @@
             background: var(--card-bg-warm);
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            padding: 22px 14px 18px;
+            padding: 38px 14px 34px;
             text-align: center;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -529,7 +526,6 @@
             from { opacity: 0; transform: translateY(16px) scale(0.9); }
             to   { opacity: 1; transform: translateY(0) scale(1); }
         }
-        .gift-reveal-emoji { font-size: 2.6rem; display: block; margin-bottom: 8px; }
         .gift-reveal-label {
             font-family: 'Montserrat', serif;
             font-size: 0.78rem;
@@ -545,14 +541,6 @@
             color: var(--cloud-rose);
             letter-spacing: 1px;
         }
-        .gift-reveal-note {
-            font-family: 'Montserrat', serif;
-            font-style: italic;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 10px;
-        }
-
         /* Footer */
         .footer { text-align: center; padding: 10px 20px 40px; }
         .footer-soot { font-size: 1.6rem; letter-spacing: 8px; margin-bottom: 10px; filter: grayscale(0.15); }
@@ -569,7 +557,7 @@
             .hero-totoro { font-size: 2.5rem; }
             .card { padding: 28px 20px; }
             .suggestions { grid-template-columns: 1fr; gap: 10px; }
-            .suggestion-card { padding: 16px 14px; }
+            .suggestion-card { padding: 30px 14px 26px; }
             .qrcode-wrap img { width: 170px; height: 170px; }
             .messages-wall { column-count: 1; }
             .gift-reveal-value { font-size: 1.9rem; }
@@ -611,7 +599,7 @@
                  alt="QR Code PIX"
                  onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22250%22 height=%22250%22><rect width=%22250%22 height=%22250%22 fill=%22%23F6EDE4%22 rx=%228%22/><text x=%22125%22 y=%22130%22 text-anchor=%22middle%22 font-size=%2216%22 fill=%22%235C7A88%22 font-family=%22serif%22>♥ PIX</text></svg>'">
         </div>
-        <div class="pix-notice">O PIX vai ser enviado no dia pelo Lucas Padilha para o Rodrigo Sonoki.</div>
+        <p class="pix-notice">O PIX vai ser enviado no dia pelo Lucas Padilha para o Rodrigo Sonoki.</p>
         <button class="btn-copy" onclick="copyPix()" id="copyBtn">Copiar PIX</button>
     </div>
 
@@ -658,31 +646,29 @@
             <span class="gift-label">toque para abrir o presente</span>
         </button>
         <div class="gift-reveal" id="giftReveal" hidden>
-            <span class="gift-reveal-emoji">💝</span>
             <div class="gift-reveal-label">total arrecadado</div>
             <div class="gift-reveal-value">R$ 1.190,00</div>
-            <div class="gift-reveal-note">obrigado por cada carinho 💌</div>
         </div>
     </div>
     <div class="card recados-card">
         <div class="msg-count" id="msgCount">9 recados</div>
         <div class="messages-wall" id="messagesWall">
-            <div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U022NFL66HH-46b24eb475c4-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;D&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Dani Palazzi</div><div class="msg-date">10/09/2026</div></div></div><div class="msg-text">Bem-vinda, Olivia! Que sua chegada encha a família de amor, alegria e momentos inesquecíveis! Que Deus abençoe e proteja sempre você! </div></div>
-<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U03C14KL1AR-d315bcfb9e59-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;S&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Sabino</div><div class="msg-date">09/09/2026</div></div></div><div class="msg-text">Sonoki e Mariana, desejo que essa fase seja repleta de amor, aprendizado e dengo! É um ciclo de muita mudança, se cerquem de pessoas incríveis e curtam muito esse momento.
+            <div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-UE1N0BXLH-9a5ef1dcbfb6-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;V&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">VIP</div><div class="msg-date">07/08/2026</div></div></div><div class="msg-text">Querida Olivia, tudo bem por aí? Sonokinha, deixa eu te falar, eu adoro seu pai. Ele tem uma energia incrível e alegra muito o meu dia. Tenho certeza que vai alegrar o seu também. Você vai ter um paizão sensacional, conta com ele.
 
-Que a baby Olivia venha com muita saúde &lt;3 uma boa hora para a Mariana ❤️</div></div>
-<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U06QB74LQKZ-01d903b4cc4e-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;D&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Daniel Soares</div><div class="msg-date">08/09/2026</div></div></div><div class="msg-text">Parabens demaxxx pra essa nova fase, que a Olivia venha com muita saude e traga ainda mais amor e alegria pra familia, abraço amo vcs &lt;3</div></div>
-<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U093X378RHR-b4c9d9360c74-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;G&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Gustavo</div><div class="msg-date">27/08/2026</div></div></div><div class="msg-text">Hey Olivia, que chegada seja abençoada e cheia de amor e alegria.</div></div>
-<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U02UYSM98P6-af36fc0d6956-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;V&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Victão e Paloma</div><div class="msg-date">17/08/2026</div></div></div><div class="msg-text">Que bom é fazer parte desse momento tão especial na vida de vocês! 
-Não consegui conter a felicidade com a notícia e toda vez que lembro vem em um sorriso sincero no rosto. Tenho certeza que a chegada da princesa irá trazer ainda mais felicidade na vida de vocês e estou ansioso também, mandem fotos hehehe &lt;3 </div></div>
+Queridos Sonoki e Mariana, desejo a vocês muito amor, felicidades, paciência e saúde nesse novo momento. Que seja repleto de alegrias e que aproveitem muito!</div></div>
+<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U07R9ME61SM-be2c758f7d5b-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;I&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Ivens</div><div class="msg-date">12/08/2026</div></div></div><div class="msg-text">Sonoki e Mariana, parabéns pela chegada da Olivia! Muitas felicidades e saúde!</div></div>
+<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U0716CE9GFN-f6132fd83074-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;R&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Rafa</div><div class="msg-date">13/08/2026</div></div></div><div class="msg-text">Maninho! Parabéns demais pela chegada da Olivia! Que essa nova fase seja cheia de amor, saúde e momentos inesquecíveis pra vocês. Aproveita cada minuto! ❤️</div></div>
 <div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U09F4Q58ADP-c132901867aa-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;J&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Jhoze</div><div class="msg-date">13/08/2026</div></div></div><div class="msg-text">Sonoki e Mariana, vocês e a Olivia vão viver um momento muito especial da vida. Não é fácil, mas ao mesmo tempo é gratificante demais.
 
 Que a Olivia chegue com muita saúde e que essa nova fase seja cheia de alegria e amor pra vocês. Muitas felicidades! 💛</div></div>
-<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U0716CE9GFN-f6132fd83074-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;R&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Rafa</div><div class="msg-date">13/08/2026</div></div></div><div class="msg-text">Maninho! Parabéns demais pela chegada da Olivia! Que essa nova fase seja cheia de amor, saúde e momentos inesquecíveis pra vocês. Aproveita cada minuto! ❤️</div></div>
-<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U07R9ME61SM-be2c758f7d5b-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;I&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Ivens</div><div class="msg-date">12/08/2026</div></div></div><div class="msg-text">Sonoki e Mariana, parabéns pela chegada da Olivia! Muitas felicidades e saúde!</div></div>
-<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-UE1N0BXLH-9a5ef1dcbfb6-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;V&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">VIP</div><div class="msg-date">07/08/2026</div></div></div><div class="msg-text">Querida Olivia, tudo bem por aí? Sonokinha, deixa eu te falar, eu adoro seu pai. Ele tem uma energia incrível e alegra muito o meu dia. Tenho certeza que vai alegrar o seu também. Você vai ter um paizão sensacional, conta com ele.
+<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U02UYSM98P6-af36fc0d6956-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;V&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Victão e Paloma</div><div class="msg-date">17/08/2026</div></div></div><div class="msg-text">Que bom é fazer parte desse momento tão especial na vida de vocês! 
+Não consegui conter a felicidade com a notícia e toda vez que lembro vem em um sorriso sincero no rosto. Tenho certeza que a chegada da princesa irá trazer ainda mais felicidade na vida de vocês e estou ansioso também, mandem fotos hehehe &lt;3 </div></div>
+<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U093X378RHR-b4c9d9360c74-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;G&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Gustavo</div><div class="msg-date">27/08/2026</div></div></div><div class="msg-text">Hey Olivia, que chegada seja abençoada e cheia de amor e alegria.</div></div>
+<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U06QB74LQKZ-01d903b4cc4e-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;D&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Daniel Soares</div><div class="msg-date">08/09/2026</div></div></div><div class="msg-text">Parabens demaxxx pra essa nova fase, que a Olivia venha com muita saude e traga ainda mais amor e alegria pra familia, abraço amo vcs &lt;3</div></div>
+<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U03C14KL1AR-d315bcfb9e59-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;S&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Sabino</div><div class="msg-date">09/09/2026</div></div></div><div class="msg-text">Sonoki e Mariana, desejo que essa fase seja repleta de amor, aprendizado e dengo! É um ciclo de muita mudança, se cerquem de pessoas incríveis e curtam muito esse momento.
 
-Queridos Sonoki e Mariana, desejo a vocês muito amor, felicidades, paciência e saúde nesse novo momento. Que seja repleto de alegrias e que aproveitem muito!</div></div>
+Que a baby Olivia venha com muita saúde &lt;3 uma boa hora para a Mariana ❤️</div></div>
+<div class="message-card"><div class="msg-header"><img class="msg-avatar" src="https://ca.slack-edge.com/E017UJXRZQ8-U022NFL66HH-46b24eb475c4-512" alt="" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="&lt;span class=&quot;msg-avatar msg-avatar-fallback&quot;&gt;D&lt;/span&gt;" /><div class="msg-meta"><div class="msg-name">Dani Palazzi</div><div class="msg-date">10/09/2026</div></div></div><div class="msg-text">Bem-vinda, Olivia! Que sua chegada encha a família de amor, alegria e momentos inesquecíveis! Que Deus abençoe e proteja sempre você! </div></div>
         </div>
     </div>
     <!-- RECADOS_WALL_END -->
