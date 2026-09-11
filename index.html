@@ -65,9 +65,9 @@
         }
 
         .container {
-            max-width: 560px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 30px 20px 20px;
+            padding: 30px 24px 20px;
             position: relative;
             z-index: 1;
         }
@@ -178,7 +178,8 @@
             display: flex;
             justify-content: center;
             gap: 0;
-            margin: 0 0 22px;
+            margin: 0 auto 22px;
+            max-width: 460px;
             background: var(--card-bg);
             border-radius: 50px;
             padding: 5px;
@@ -437,14 +438,21 @@
         .form-status.success { display: block; background: #EEF5EE; color: #5A8A62; }
         .form-status.error   { display: block; background: #FFF0F0; color: #C06060; }
 
-        /* Messages wall */
-        .messages-wall { display: flex; flex-direction: column; gap: 12px; }
+        /* Messages wall — grid estilo Pinterest (masonry via CSS columns) */
+        .messages-wall {
+            column-count: 3;
+            column-gap: 14px;
+        }
         .message-card {
             background: var(--card-bg-warm);
             border-radius: 14px;
             padding: 16px 20px;
             border: 1px solid var(--card-border);
             animation: fadeSlide 0.4s ease-out;
+            break-inside: avoid;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 14px;
         }
         @keyframes fadeSlide {
             from { opacity: 0; transform: translateY(8px); }
@@ -479,11 +487,81 @@
         }
         .msg-count { font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-bottom: 18px; font-weight: 300; }
 
+        /* Gift / total arrecadado */
+        .gift-block { text-align: center; padding: 34px 20px 30px; }
+        .gift-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Montserrat', sans-serif;
+            padding: 8px 12px;
+        }
+        .gift-btn[hidden], .gift-reveal[hidden] { display: none; }
+        .gift-emoji {
+            font-size: 4.2rem;
+            line-height: 1;
+            display: block;
+            filter: drop-shadow(0 6px 10px rgba(90, 78, 74, 0.12));
+            animation: gentleBounce 3s ease-in-out infinite;
+            transition: transform 0.2s;
+        }
+        .gift-btn:hover .gift-emoji { transform: scale(1.07) rotate(-3deg); }
+        .gift-label {
+            font-family: 'Montserrat', serif;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--text-subtle);
+        }
+        .gift-btn.opening .gift-emoji { animation: giftShake 0.45s ease-in-out; }
+        @keyframes giftShake {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25%      { transform: rotate(-8deg) scale(1.1); }
+            50%      { transform: rotate(8deg) scale(1.16); }
+            75%      { transform: rotate(-5deg) scale(1.07); }
+        }
+        .gift-reveal { animation: giftRevealIn 0.6s ease-out; }
+        @keyframes giftRevealIn {
+            from { opacity: 0; transform: translateY(16px) scale(0.9); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .gift-reveal-emoji { font-size: 2.6rem; display: block; margin-bottom: 8px; }
+        .gift-reveal-label {
+            font-family: 'Montserrat', serif;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--wood-brown);
+            margin-bottom: 6px;
+        }
+        .gift-reveal-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--cloud-rose);
+            letter-spacing: 1px;
+        }
+        .gift-reveal-note {
+            font-family: 'Montserrat', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
         /* Footer */
         .footer { text-align: center; padding: 10px 20px 40px; }
         .footer-soot { font-size: 1.6rem; letter-spacing: 8px; margin-bottom: 10px; filter: grayscale(0.15); }
         .footer-text { font-family: 'Dancing Script', cursive; font-size: 1.1rem; color: var(--text-muted); }
         .footer-text span { color: var(--cloud-rose); }
+
+        @media (max-width: 860px) {
+            .messages-wall { column-count: 2; }
+        }
 
         /* Responsive */
         @media (max-width: 540px) {
@@ -493,6 +571,8 @@
             .suggestions { grid-template-columns: 1fr; gap: 10px; }
             .suggestion-card { padding: 16px 14px; }
             .qrcode-wrap img { width: 170px; height: 170px; }
+            .messages-wall { column-count: 1; }
+            .gift-reveal-value { font-size: 1.9rem; }
         }
     </style>
 </head>
@@ -516,12 +596,12 @@
 
     <!-- Tabs -->
     <div class="tab-bar" style="margin-top: 48px;">
-        <button class="tab-btn active" onclick="switchTab('contribuicao')">Contribuição</button>
-        <button class="tab-btn" onclick="switchTab('recados')">Mural de recados</button>
+        <button class="tab-btn active" onclick="switchTab('recados')">Mural de recados</button>
+        <button class="tab-btn" onclick="switchTab('contribuicao')">Contribuição</button>
     </div>
 
     <!-- Tab: Contribuição -->
-    <div class="tab-panel active" id="tab-contribuicao">
+    <div class="tab-panel" id="tab-contribuicao">
 
     <!-- PIX -->
     <div class="card pix-card">
@@ -568,20 +648,22 @@
     </div><!-- /tab-contribuicao -->
 
     <!-- Tab: Recados -->
-    <div class="tab-panel" id="tab-recados">
-
-    <!-- Recados: Google Forms -->
-    <div class="card recados-card">
-        <h2>Deixe seu recado</h2>
-        <p class="card-subtitle">Uma mensagem de carinho para o Rodrigo, Mariana e Olivia 💌</p>
-        <div class="forms-embed">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfZHxS_GxbpcFeoSsVidb4k_GYxx6XmiTvAPjaX1it2ZxISkw/viewform?embedded=true"
-                    frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
-        </div>
-    </div>
+    <div class="tab-panel active" id="tab-recados">
 
     <!-- Mural de recados (atualizado automaticamente) -->
     <!-- RECADOS_WALL_START -->
+    <div class="card gift-block">
+        <button class="gift-btn" id="giftBtn" type="button" onclick="openGift()" aria-label="Abrir presente">
+            <span class="gift-emoji">🎁</span>
+            <span class="gift-label">toque para abrir o presente</span>
+        </button>
+        <div class="gift-reveal" id="giftReveal" hidden>
+            <span class="gift-reveal-emoji">💝</span>
+            <div class="gift-reveal-label">total arrecadado</div>
+            <div class="gift-reveal-value">R$ 1.190,00</div>
+            <div class="gift-reveal-note">obrigado por cada carinho 💌</div>
+        </div>
+    </div>
     <div class="card recados-card">
         <div class="msg-count" id="msgCount">9 recados</div>
         <div class="messages-wall" id="messagesWall">
@@ -605,6 +687,16 @@ Queridos Sonoki e Mariana, desejo a vocês muito amor, felicidades, paciência e
     </div>
     <!-- RECADOS_WALL_END -->
 
+    <!-- Recados: Google Forms (no final, pra dar destaque aos recados) -->
+    <div class="card recados-card">
+        <h2>Deixe seu recado</h2>
+        <p class="card-subtitle">Uma mensagem de carinho para o Rodrigo, Mariana e Olivia 💌</p>
+        <div class="forms-embed">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfZHxS_GxbpcFeoSsVidb4k_GYxx6XmiTvAPjaX1it2ZxISkw/viewform?embedded=true"
+                    frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+        </div>
+    </div>
+
     </div><!-- /tab-recados -->
 
     <div class="hearts-divider">♥ &nbsp; ♥ &nbsp; ♥</div>
@@ -617,6 +709,17 @@ function switchTab(tab) {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.querySelector(`.tab-btn[onclick*="${tab}"]`).classList.add('active');
     document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function openGift() {
+    const btn = document.getElementById('giftBtn');
+    const reveal = document.getElementById('giftReveal');
+    if (!btn || !reveal || btn.hidden) return;
+    btn.classList.add('opening');
+    setTimeout(() => {
+        btn.hidden = true;
+        reveal.hidden = false;
+    }, 420);
 }
 
 function copyPix() {
